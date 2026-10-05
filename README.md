@@ -8,19 +8,20 @@ The data regarding the food items come from databases from USDA FoodData Central
 **Note:** The app is an android and pc app but is right now only available for pc until I get a proper software license for my app. 
 ## _Prerequisites:_ You need to have git installed
 ## 1: Install uv (if you don't have it)
-If you use Linux / macOS you can open a terminal and type either:   
+#If you use Linux / macOS you can open a terminal and type either:   
 -`pipx install uv`  
 or  
 -`pip install uv`  
   
-If you have curl either or wget you can also use:  
+# If you have curl either or wget you can also use:  
 `curl -LsSf https://astral.sh/uv/install.sh | sh`  
 or  
 -`wget -qO- https://astral.sh/uv/install.sh | sh`  
-
-If you use Windows you can open either powershell or WinGet.  
+  
+# If you use Windows you can open either powershell or WinGet.  
 If on powershell:  
 `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"`  
+  
 If on WinGet:  
 `winget install --id=astral-sh.uv -e`  
 Now close and open a new terminal.  
