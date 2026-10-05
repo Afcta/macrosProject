@@ -7,7 +7,7 @@ The data regarding the food items come from databases from USDA FoodData Central
 ## How to run the app
 **Note:** The app is an android and pc app but is right now only available for pc until I get a proper software license for my app. 
 ### 1: Install uv (if you don't have it)
-####If you use Linux / macOS you can open a terminal and type either:   
+#### If you use Linux / macOS you can open a terminal and type either:   
 -`pipx install uv`  
 or  
 -`pip install uv`  
