@@ -30,7 +30,7 @@ from rapidfuzz.distance import Levenshtein
 # from scipy.optimize import linear_sum_assignment
 
 # if platform == "android":
-#     base = Path("/sdcard/MyApp")
+#     base = Path("/sdcard/MacroTracker9000")
 # else:
 #     base = Path("MealLogs")
 BASE_DIR = None
@@ -291,7 +291,7 @@ class DetailScreen(Screen):
             layout.add_widget(Label(text=f"{name}\n{cal} kcal\n{prot}g protein\n{carbs}g carbs\n{fat}g fat"))
             btn = Button(text="Back", size_hint_y=None, height=dp(40))
             layout.add_widget(btn)
-            popup = Popup(title="Food Info", content=layout, size_hint=(0.6, 0.4))
+            popup = Popup(title="Food Info (100g)", content=layout, size_hint=(0.6, 0.4))
             btn.bind(on_press=popup.dismiss)
             popup.open()
             
@@ -642,11 +642,16 @@ class FoodRow(BoxLayout):
         if self.spinner.text == "100g" or self.spinner.text == "100g": return 100
         # print("portions:",self.portions)
         # print("self.spinner.text.split()[0]:",self.spinner.text.split("(")[0])
-        return self.portions[self.spinner.text.split("(")[0].rstrip()]
+        NumOfParentheses = self.spinner.text.count("(")
+        print("self.spinner.text.split('('):", self.spinner.text.split("("))
+        print("\nself.spinner.text.rsplit(\"(\")[1].rstrip():",self.spinner.text.rsplit("(",1)[0])
+        return self.portions[self.spinner.text.rsplit("(",maxsplit=1)[0].rstrip()]
     
     def get_foodPortion_name_grams(self):
         if self.spinner.text == "100g" or self.spinner.text == "100g": return ["100g",100]
-        return [self.spinner.text.split("(")[0].rstrip(), self.portions[self.spinner.text.split("(")[0].rstrip()]]
+        NumOfParentheses = self.spinner.text.count("(")
+        print("\nself.portions:",self.portions)
+        return [self.spinner.text.split("(")[0].rstrip(), self.portions[self.spinner.text.rsplit("(",maxsplit=1)[0].rstrip()]]
 
 class SearchUI(BoxLayout):
     def __init__(self, foodList, selectedFoods, **kwargs):
@@ -1230,7 +1235,7 @@ class SearchUI(BoxLayout):
     
 
 
-class MyApp(App):
+class MacroTracker9000(App):
     def build(self):
         sm = ScreenManager()
 
@@ -1304,4 +1309,4 @@ class ClickableLabel(ButtonBehavior, Label):
 if __name__ == "__main__":
     # os.makedirs("MealLogs", exist_ok=True)
     get_base().mkdir(parents=True, exist_ok=True)
-    MyApp().run()
+    MacroTracker9000().run()
